@@ -4,6 +4,7 @@ import 'package:movies/screens/screens.dart';
 class AppRoutes {
   static String initialRoute = '/';
   static Map<String, Widget Function(BuildContext)> routes = {
-    '/': (c) => const HomeScreen(),
+    '/': (_) => const HomeScreen(),
+    'details': (_) => const DetailsScreen(),
   };
 }
