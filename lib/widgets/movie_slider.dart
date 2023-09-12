@@ -49,8 +49,7 @@ class _MoviePoster extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(5)),
                 child: FadeInImage(
                   fit: BoxFit.contain,
-                  //Todo: replace with assetimage
-                  placeholder: NetworkImage('https://placehold.co/500x700/png'),
+                  placeholder: AssetImage("assets/gifs/loading-gif.gif"),
                   image: NetworkImage('https://placehold.co/500x700/png'),
                 ),
               ),
