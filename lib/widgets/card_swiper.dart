@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/config/constant/app_constant.dart';
@@ -20,10 +21,12 @@ class CardSwiper extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, "details"),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: const FadeInImage(
+            child: CachedNetworkImage(
               fit: BoxFit.cover,
-              placeholder: AssetImage("assets/gifs/loading-gif.gif"),
-              image: NetworkImage("https://placehold.co/500x700/png"),
+              imageUrl: "https://placehold.co/500x700/png",
+              placeholder: (context, url) =>
+                  Image.asset("assets/gifs/loading-gif.gif"),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),

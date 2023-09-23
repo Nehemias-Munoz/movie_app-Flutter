@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/config/constant/app_constant.dart';
 
@@ -41,20 +42,21 @@ class _MoviePoster extends StatelessWidget {
         margin: const EdgeInsets.all(7.0),
         height: AppConstant.getSize(context).height * .9,
         width: AppConstant.getSize(context).width * .30,
-        child: const Column(
+        child: Column(
           children: [
             Expanded(
               flex: 5,
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                child: FadeInImage(
-                  fit: BoxFit.contain,
-                  placeholder: AssetImage("assets/gifs/loading-gif.gif"),
-                  image: NetworkImage('https://placehold.co/500x700/png'),
-                ),
-              ),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  child: CachedNetworkImage(
+                    imageUrl: "https://placehold.co/500x700/png",
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    placeholder: (_, __) =>
+                        Image.asset("assets/gifs/loading-gif.gif"),
+                  )),
             ),
-            Expanded(
+            const Expanded(
               flex: 1,
               child: Center(
                 child: Text(
